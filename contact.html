@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <meta content="dont mind about them">
+    <meta name="Never">
+    <link rel="stylesheet" href="css/contact.css">
+  </head>
+  <body>
+    <div class="container ">
+      <form onsubmit="sendEmail(); reset(); return false;">
+        <h3>CONTACT US</h3>
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your e-mail" required>
+        <input type="text" id="phone" placeholder="Phone no." required>
+        <textarea id="message" rows="4" cols="80" placeholder="Send your message"></textarea>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function sendEmail(){
+                Email.send({
+            Host : "smtp.email.com",
+            Username : "Thor henry",
+            Password : "Henry1234",
+            To : 'thorhenry20@gmail.com',
+            From : document.getElementById("email").value,
+            Subject : "New contact equiry",
+            Body :  "name: " + document.getElementById("name").value,
+                    "<br> Email: " + document.getElementById("email").value,
+                    "<br> Phone no.: " + document.getElementById("phone").value,
+                    "<br> Message: " + document.getElementById("message").value,
+        }).then(
+          message => alert(Message sent successfully)
+        );
+      }
+    </script>
+  </body>
+</html>
